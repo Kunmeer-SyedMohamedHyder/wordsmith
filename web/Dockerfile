@@ -2,4 +2,4 @@ FROM golang
 
 COPY . .
 RUN go build dispatcher.go
-CMD ./dispatcher
+CMD exec ./dispatcher
