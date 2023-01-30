@@ -12,3 +12,5 @@ RUN mvn verify
 
 WORKDIR /target
 CMD exec java -Xmx8m -Xms8m -jar words.jar
+
+EXPOSE 8080
