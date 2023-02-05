@@ -1,10 +1,10 @@
-FROM golang
+FROM golang:alpine
 
 WORKDIR /app
 COPY . .
-RUN CGO_ENABLED=0 go build dispatcher.go
+RUN go build dispatcher.go
 
-FROM scratch
+FROM alpine
 COPY --from=0 /app/dispatcher .
 
 CMD ["./dispatcher"]
