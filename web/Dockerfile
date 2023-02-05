@@ -1,7 +1,10 @@
 FROM golang
 
+WORKDIR /app
 COPY . .
-RUN go build dispatcher.go
-CMD exec ./dispatcher
+RUN CGO_ENABLED=0 go build dispatcher.go
 
-EXPOSE 80
+FROM scratch
+COPY --from=0 /app/dispatcher .
+
+CMD ["./dispatcher"]
